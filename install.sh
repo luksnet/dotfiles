@@ -25,17 +25,23 @@ MODULY=(
     "alacritty|motyw terminala Alacritty|1"
     "konsole|schematy i profil Konsole|1"
     "kolory|schematy kolorów KDE i motywy Kvantum (pliki)|1"
+    "tmux|tmux w kolorach Gruvbox (prefiks Ctrl+Spacja)|1"
+    "bat|bat (cat z podświetlaniem) w motywie gruvbox|1"
+    "btop|btop w motywie Gruvbox Material|1"
     "tapety|tapety w ~/Obrazy/Tapety|1"
     "kde-kolory|KDE: włącz schemat Gruvbox Material|1"
     "kde-kursor|KDE: kursor Simp1e Gruvbox|1"
     "kde-ikony|KDE: ikony Gruvbox Plus|1"
     "kde-kvantum|KDE: styl widżetów Kvantum|1"
     "kde-czcionki|KDE: interfejs IBM Plex Sans, terminal Hack|1"
+    "kde-okna|KDE: ramki okien (tytuł na środku, bez obwódki)|1"
+    "kde-gtk|KDE: aplikacje GTK w kolorach Gruvbox|1"
     "kde-konsola|KDE: domyślny profil Konsole|1"
     "kde-kate|KDE: motyw Kate|1"
     "kde-tapeta|KDE: tapeta pulpitu (logo Arch)|1"
     "kde-blokada|KDE: tapeta ekranu blokady (kropki)|1"
     "kde-panel|KDE: panel na całą szerokość i zegar|1"
+    "kde-panel2|KDE: panel na drugim monitorze|1"
     "sddm|ekran logowania SDDM (sudo)|0"
     "boot|GRUB i Plymouth (sudo)|0"
 )
@@ -120,7 +126,8 @@ link() {
 
 m_pakiety() {
     run sudo pacman -S --needed vim git alacritty kvantum fastfetch plymouth librsvg wl-clipboard ttf-hack ttf-ibm-plex \
-        zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting
+        zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
+        tmux fzf eza bat zoxide btop breeze-gtk kde-gtk-config ttf-nerd-fonts-symbols-mono
     if command -v yay >/dev/null; then
         run yay -S --needed gruvbox-plus-icon-theme xcursor-simp1e-gruvbox-dark xcursor-simp1e-gruvbox-light
     else
@@ -163,6 +170,9 @@ m_kolory() {
     for d in GruvboxAqua GruvboxMaterial; do link "config/Kvantum/$d" ~/.config/Kvantum/$d; done
     link config/Kvantum/kvantum.kvconfig ~/.config/Kvantum/kvantum.kvconfig
 }
+m_tmux()      { link config/tmux/tmux.conf ~/.config/tmux/tmux.conf; }
+m_bat()       { link config/bat/config ~/.config/bat/config; }
+m_btop()      { link config/btop/btop.conf ~/.config/btop/btop.conf; }
 m_tapety()    { link wallpapers "$PICTURES/Tapety"; }
 m_sddm()      { run sudo bash "$DOT/system/sddm-gruvbox.sh"; }
 m_boot()      { run sudo bash "$DOT/system/boot/boot-gruvbox.sh"; }
