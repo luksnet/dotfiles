@@ -1,4 +1,6 @@
 " Gruvbox Material (sainnhe/gruvbox-material w ~/.vim/pack/themes/start/)
+syntax on
+filetype plugin indent on
 set background=dark
 set termguicolors
 let g:gruvbox_material_background = 'medium'   " hard / medium / soft
