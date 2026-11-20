@@ -39,6 +39,8 @@ CursorTheme=Simp1e-Gruvbox-Dark
 CursorSize=24
 EOF
 
+fc-list -q "IBM Plex Sans" || echo "Uwaga: brak czcionki IBM Plex Sans (pacman -S ttf-ibm-plex), SDDM użyje domyślnej."
+
 # 4. Kolory Plasmy dla ekranu logowania (to samo robi „Zastosuj ustawienia Plazmy”)
 install -d -o sddm -g sddm -m755 /var/lib/sddm/.config
 install -o sddm -g sddm -m644 "$DOT/share/color-schemes/GruvboxMaterial.colors" \
@@ -47,6 +49,10 @@ cat >> /var/lib/sddm/.config/kdeglobals <<'EOF'
 
 [Icons]
 Theme=Gruvbox-Plus-Dark
+
+[General]
+font=IBM Plex Sans,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+fixed=Hack,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 EOF
 printf '[Mouse]\ncursorTheme=Simp1e-Gruvbox-Dark\ncursorSize=24\n' > /var/lib/sddm/.config/kcminputrc
 chown sddm:sddm /var/lib/sddm/.config/kcminputrc
