@@ -1,0 +1,11 @@
+" Gruvbox Material (sainnhe/gruvbox-material w ~/.vim/pack/themes/start/)
+set background=dark
+set termguicolors
+let g:gruvbox_material_background = 'medium'   " hard / medium / soft
+let g:gruvbox_material_foreground = 'material'
+let g:gruvbox_material_better_performance = 1
+silent! colorscheme gruvbox-material
+" Gdyby wtyczki zabrakło, zostaje wbudowany motyw oparty na Gruvboxie
+if !exists('g:colors_name') || g:colors_name !=# 'gruvbox-material'
+  silent! colorscheme retrobox
+endif

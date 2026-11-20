@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Gruvbox Arch
+Description=Logo Arch na tle Gruvbox Material z paskiem postępu w kolorze aqua
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/gruvbox-arch
+ScriptFile=/usr/share/plymouth/themes/gruvbox-arch/gruvbox-arch.script

@@ -1,0 +1,141 @@
+/* Gruvbox dla Immich (akcent: aqua).
+   Wklej w: Administracja → Ustawienia → Motyw → Własny CSS.
+   Zmienne odczytane z Immich (2026-11-20); po dużej
+   aktualizacji Immich może zmienić nazwy i część kolorów wróci do domyślnych. */
+
+/* ---------- tryb jasny ---------- */
+:root, .light {
+  --immich-ui-light: #f9f5d7;   /* tło */
+  --immich-ui-dark: #3c3836;    /* tekst */
+  --immich-ui-muted: #7c6f64;
+  --immich-ui-gray: #f2e5bc;    /* panele, pasek boczny */
+
+  --immich-ui-light-50: #f9f5d7;
+  --immich-ui-light-100: #fbf1c7;
+  --immich-ui-light-200: #ebdbb2;
+  --immich-ui-light-300: #d5c4a1;
+  --immich-ui-light-400: #bdae93;
+  --immich-ui-light-500: #a89984;
+  --immich-ui-light-600: #928374;
+  --immich-ui-light-700: #7c6f64;
+  --immich-ui-light-800: #665c54;
+  --immich-ui-light-900: #3c3836;
+  --immich-ui-light-950: #282828;
+
+  --immich-ui-dark-50: #282828;
+  --immich-ui-dark-100: #3c3836;
+  --immich-ui-dark-200: #665c54;
+  --immich-ui-dark-300: #7c6f64;
+  --immich-ui-dark-400: #928374;
+  --immich-ui-dark-500: #a89984;
+  --immich-ui-dark-600: #bdae93;
+  --immich-ui-dark-700: #d5c4a1;
+  --immich-ui-dark-800: #ebdbb2;
+  --immich-ui-dark-900: #fbf1c7;
+  --immich-ui-dark-950: #f9f5d7;
+
+  /* kolor główny: aqua Gruvbox (ciemniejsza odmiana, czytelna na jasnym tle) */
+  --immich-ui-primary-50: #eef5f0;
+  --immich-ui-primary-100: #d4e6da;
+  --immich-ui-primary-200: #a9ccb5;
+  --immich-ui-primary-300: #7eb290;
+  --immich-ui-primary-400: #5a9670;
+  --immich-ui-primary-500: #427b58;
+  --immich-ui-primary-600: #356346;
+  --immich-ui-primary-700: #284b35;
+  --immich-ui-primary-800: #1b3324;
+  --immich-ui-primary-900: #0f1d14;
+  --immich-ui-primary-950: #08110b;
+
+  --immich-ui-danger-500: #9d0006;
+  --immich-ui-success-500: #79740e;
+  --immich-ui-warning-500: #b57614;
+  --immich-ui-info-500: #076678;
+
+  /* starsze zmienne (RGB bez przecinków), używane jeszcze w części widoków */
+  --immich-primary: 66 123 88;
+  --immich-bg: 249 245 215;
+  --immich-fg: 60 56 54;
+}
+
+/* ---------- tryb ciemny ---------- */
+.dark {
+  --immich-ui-light: #1d2021;
+  --immich-ui-dark: #ebdbb2;
+  --immich-ui-muted: #a89984;
+  --immich-ui-gray: #282828;
+
+  --immich-ui-light-50: #1d2021;
+  --immich-ui-light-100: #282828;
+  --immich-ui-light-200: #32302f;
+  --immich-ui-light-300: #3c3836;
+  --immich-ui-light-400: #504945;
+  --immich-ui-light-500: #665c54;
+  --immich-ui-light-600: #7c6f64;
+  --immich-ui-light-700: #928374;
+  --immich-ui-light-800: #a89984;
+  --immich-ui-light-900: #d5c4a1;
+  --immich-ui-light-950: #ebdbb2;
+
+  --immich-ui-dark-50: #ebdbb2;
+  --immich-ui-dark-100: #d5c4a1;
+  --immich-ui-dark-200: #a89984;
+  --immich-ui-dark-300: #928374;
+  --immich-ui-dark-400: #7c6f64;
+  --immich-ui-dark-500: #665c54;
+  --immich-ui-dark-600: #504945;
+  --immich-ui-dark-700: #3c3836;
+  --immich-ui-dark-800: #32302f;
+  --immich-ui-dark-900: #282828;
+  --immich-ui-dark-950: #1d2021;
+
+  /* w trybie ciemnym skala jest odwrócona: 50 najciemniejszy, 500 główny */
+  --immich-ui-primary-50: #0f1a12;
+  --immich-ui-primary-100: #18291d;
+  --immich-ui-primary-200: #243d2b;
+  --immich-ui-primary-300: #36593f;
+  --immich-ui-primary-400: #5a8a5f;
+  --immich-ui-primary-500: #8ec07c;
+  --immich-ui-primary-600: #a2cc93;
+  --immich-ui-primary-700: #b6d8aa;
+  --immich-ui-primary-800: #cbe4c1;
+  --immich-ui-primary-900: #e0efd9;
+  --immich-ui-primary-950: #f0f7ec;
+
+  --immich-ui-danger-500: #fb4934;
+  --immich-ui-success-500: #b8bb26;
+  --immich-ui-warning-500: #fabd2f;
+  --immich-ui-info-500: #83a598;
+
+  --immich-dark-primary: 142 192 124;
+  --immich-dark-bg: 29 32 33;
+  --immich-dark-fg: 235 219 178;
+  --immich-dark-gray: 40 40 40;
+}
+
+html.dark { background-color: #1d2021; }
+html.light { background-color: #f9f5d7; }
+
+/* ---------- palety Tailwinda, z których Immich bierze część kolorów ----------
+   gray/slate/zinc mają domyślnie niebieskawy odcień (pola formularzy, karty);
+   ta sama skala działa w obu trybach: jasne numery w jasnym, ciemne w ciemnym. */
+:root {
+  --color-gray-50: #f9f5d7;  --color-slate-50: #f9f5d7;  --color-zinc-50: #f9f5d7;
+  --color-gray-100: #f2e5bc; --color-slate-100: #f2e5bc; --color-zinc-100: #f2e5bc;
+  --color-gray-200: #ebdbb2; --color-slate-200: #ebdbb2; --color-zinc-200: #ebdbb2;
+  --color-gray-300: #d5c4a1; --color-slate-300: #d5c4a1; --color-zinc-300: #d5c4a1;
+  --color-gray-400: #bdae93; --color-slate-400: #bdae93; --color-zinc-400: #bdae93;
+  --color-gray-500: #928374; --color-slate-500: #928374; --color-zinc-500: #928374;
+  --color-gray-600: #7c6f64; --color-slate-600: #7c6f64; --color-zinc-600: #7c6f64;
+  --color-gray-700: #504945; --color-slate-700: #504945; --color-zinc-700: #504945;
+  --color-gray-800: #3c3836; --color-slate-800: #3c3836; --color-zinc-800: #3c3836;
+  --color-gray-900: #282828; --color-slate-900: #282828; --color-zinc-900: #282828;
+  --color-gray-950: #1d2021; --color-slate-950: #1d2021; --color-zinc-950: #1d2021;
+
+  /* niebieskie akcenty → niebieski/aqua Gruvbox */
+  --color-blue-200: #b8d0c8;
+  --color-blue-500: #83a598;
+  --color-blue-600: #458588;
+  --color-indigo-200: #cbe4c1;
+  --color-indigo-700: #427b58;
+}

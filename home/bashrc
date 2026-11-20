@@ -1,0 +1,39 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+# --- Prompt Gruvbox Material ---------------------------------------------
+# alex@arch ~/Projekty/luks.net (main*) $
+#   aqua: użytkownik@host, żółty: katalog, fiolet: gałąź git (* = zmiany),
+#   $ czerwony, gdy poprzednie polecenie zakończyło się błędem.
+# Kopia poprzedniego pliku: ~/.bashrc.bak-przed-gruvbox
+if [[ -r /usr/share/git/completion/git-prompt.sh ]]; then
+    source /usr/share/git/completion/git-prompt.sh
+    GIT_PS1_SHOWDIRTYSTATE=1
+fi
+PROMPT_DIRTRIM=3
+__gm_prompt() {
+    local st=$?
+    local aqua='\[\e[38;2;137;180;130m\]' yellow='\[\e[38;2;216;166;87m\]'
+    local purple='\[\e[38;2;211;134;155m\]' fg='\[\e[38;2;212;190;152m\]'
+    local red='\[\e[38;2;234;105;98m\]' grey='\[\e[38;2;124;111;100m\]' r='\[\e[0m\]'
+    local git=''
+    if declare -F __git_ps1 >/dev/null; then git=$(__git_ps1 ' (%s)'); fi
+    local mark="${fg}\$"
+    (( st != 0 )) && mark="${red}\$"
+    PS1="${aqua}\u${grey}@${aqua}\h ${yellow}\w${purple}${git} ${mark}${r} "
+}
+PROMPT_COMMAND="__gm_prompt${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+# -------------------------------------------------------------------------
+export PATH="$HOME/.local/bin:$PATH"
+
+# Fastfetch po otwarciu terminala (tylko w zwykłym oknie terminala, nie w skryptach)
+if command -v fastfetch >/dev/null && [[ -z $FASTFETCH_SHOWN && $TERM != dumb ]]; then
+    export FASTFETCH_SHOWN=1
+    fastfetch
+fi
