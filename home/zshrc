@@ -1,0 +1,95 @@
+# ~/.zshrc: Gruvbox Material
+# Prompt jak w bashu: alex@arch ~/Projekty/luks.net (main*) $
+#   aqua: użytkownik@host, żółty: katalog, fiolet: gałąź git (* zmiany, + w indeksie),
+#   $ czerwony, gdy poprzednie polecenie zakończyło się błędem.
+
+[[ -o interactive ]] || return
+
+# --- Historia ------------------------------------------------------------
+HISTFILE=~/.cache/zsh/history
+HISTSIZE=50000
+SAVEHIST=50000
+[[ -d ${HISTFILE:h} ]] || mkdir -p ${HISTFILE:h}
+setopt share_history hist_ignore_all_dups hist_ignore_space hist_reduce_blanks
+setopt extended_history
+unsetopt beep
+setopt auto_cd interactive_comments
+
+# --- Klawisze (emacs) ----------------------------------------------------
+bindkey -e
+bindkey '^[[H'    beginning-of-line   # Home
+bindkey '^[[F'    end-of-line         # End
+bindkey '^[[3~'   delete-char         # Delete
+bindkey '^[[1;5C' forward-word        # Ctrl+→
+bindkey '^[[1;5D' backward-word       # Ctrl+←
+bindkey '^H'      backward-kill-word  # Ctrl+Backspace
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search    # ↑ szuka w historii po wpisanym początku
+bindkey '^[[B' down-line-or-beginning-search
+
+# --- Uzupełnianie --------------------------------------------------------
+fpath=(/usr/share/zsh/site-functions $fpath)
+autoload -U compinit
+zmodload zsh/complist
+compinit -d ~/.cache/zsh/zcompdump
+_comp_options+=(globdots)
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'        # bez rozróżniania wielkości liter
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:descriptions' format '%F{#d8a657}-- %d --%f'
+
+# --- Aliasy --------------------------------------------------------------
+alias ls='ls --color=auto'
+alias ll='ls -lh --color=auto'
+alias la='ls -lAh --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# --- Prompt --------------------------------------------------------------
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' unstagedstr '*'
+zstyle ':vcs_info:git:*' stagedstr '+'
+zstyle ':vcs_info:git:*' formats ' (%b%u%c)'
+zstyle ':vcs_info:git:*' actionformats ' (%b|%a%u%c)'
+precmd() { vcs_info }
+setopt prompt_subst
+# katalog: najwyżej 3 ostatnie części, wcześniejsze jako …/
+PROMPT='%F{#89b482}%n%F{#7c6f64}@%F{#89b482}%m %F{#d8a657}%(4~|…/%3~|%~)%F{#d3869b}${vcs_info_msg_0_} %(?.%F{#d4be98}.%F{#ea6962})$%f '
+
+# --- Wtyczki (pacman: zsh-autosuggestions, zsh-syntax-highlighting) -------
+if [[ -r /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#7c6f64'
+    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+    bindkey '^ ' autosuggest-accept   # Ctrl+Spacja przyjmuje podpowiedź (→ też działa)
+fi
+if [[ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ZSH_HIGHLIGHT_STYLES[command]='fg=#a9b665'
+    ZSH_HIGHLIGHT_STYLES[builtin]='fg=#a9b665'
+    ZSH_HIGHLIGHT_STYLES[alias]='fg=#a9b665'
+    ZSH_HIGHLIGHT_STYLES[function]='fg=#a9b665'
+    ZSH_HIGHLIGHT_STYLES[precommand]='fg=#a9b665,underline'
+    ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#d3869b'
+    ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#ea6962'
+    ZSH_HIGHLIGHT_STYLES[path]='fg=#d4be98,underline'
+    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#d8a657'
+    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#d8a657'
+    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#d8a657'
+    ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#7daea3'
+    ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#7daea3'
+    ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#e78a4e'
+    ZSH_HIGHLIGHT_STYLES[redirection]='fg=#e78a4e'
+    ZSH_HIGHLIGHT_STYLES[comment]='fg=#7c6f64'
+fi
+
+# --- Fastfetch po otwarciu terminala --------------------------------------
+if (( $+commands[fastfetch] )) && [[ -z $FASTFETCH_SHOWN && $TERM != dumb ]]; then
+    export FASTFETCH_SHOWN=1
+    fastfetch
+fi

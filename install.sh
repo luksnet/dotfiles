@@ -18,6 +18,7 @@ PICTURES=$(xdg-user-dir PICTURES 2>/dev/null || echo ~/Pictures)
 # nazwa | opis | domyślnie zaznaczony (1/0)
 MODULY=(
     "pakiety|pakiety pacman + AUR (sudo)|0"
+    "zsh|~/.zshrc (prompt, wtyczki, fastfetch) i zsh jako powłoka|1"
     "bash|prompt Gruvbox i fastfetch w ~/.bashrc|1"
     "vim|~/.vimrc i motyw gruvbox-material|1"
     "fastfetch|konfiguracja fastfetch|1"
@@ -117,7 +118,8 @@ link() {
 }
 
 m_pakiety() {
-    run sudo pacman -S --needed vim git alacritty kvantum fastfetch plymouth librsvg wl-clipboard ttf-hack
+    run sudo pacman -S --needed vim git alacritty kvantum fastfetch plymouth librsvg wl-clipboard ttf-hack \
+        zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting
     if command -v yay >/dev/null; then
         run yay -S --needed gruvbox-plus-icon-theme xcursor-simp1e-gruvbox-dark xcursor-simp1e-gruvbox-light
     else
@@ -125,6 +127,16 @@ m_pakiety() {
     fi
 }
 m_bash()      { link home/bashrc ~/.bashrc; }
+m_zsh() {
+    link home/zshrc ~/.zshrc
+    if ! command -v zsh >/dev/null; then
+        echo "  brak zsh: zaznacz też moduł pakiety albo: sudo pacman -S zsh"; return
+    fi
+    if [[ $(getent passwd "$USER" | cut -d: -f7) != */zsh ]]; then
+        echo "  zmiana powłoki na zsh (chsh zapyta o hasło)"
+        run chsh -s "$(command -v zsh)"
+    fi
+}
 m_vim() {
     link home/vimrc ~/.vimrc
     local v=~/.vim/pack/themes/start/gruvbox-material

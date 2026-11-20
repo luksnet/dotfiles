@@ -33,7 +33,7 @@ powstają linki do repo, więc edycja `~/.bashrc` to edycja pliku w repo.
 
 | Katalog | Zawartość | Trafia do |
 |---|---|---|
-| `home/` | `bashrc` (prompt Gruvbox, fastfetch), `vimrc` | `~/.bashrc`, `~/.vimrc` |
+| `home/` | `zshrc` i `bashrc` (prompt Gruvbox, fastfetch), `vimrc` | `~/.zshrc`, `~/.bashrc`, `~/.vimrc` |
 | `config/` | fastfetch, alacritty, Kvantum (GruvboxAqua, GruvboxMaterial) | `~/.config/` |
 | `share/` | schematy kolorów KDE, Konsole | `~/.local/share/` |
 | `wallpapers/` | tapety SVG + PNG 4K | `~/Obrazy/Tapety` |
@@ -47,7 +47,7 @@ Wtyczka gruvbox-material do Vima jest pobierana przez `install.sh`
 
 ## Pakiety
 
-- pacman: vim, git, alacritty, kvantum, fastfetch, plymouth, librsvg, wl-clipboard, ttf-hack
+- pacman: vim, git, alacritty, kvantum, fastfetch, plymouth, librsvg, wl-clipboard, ttf-hack, zsh, zsh-completions, zsh-autosuggestions, zsh-syntax-highlighting
 - AUR: gruvbox-plus-icon-theme, xcursor-simp1e-gruvbox-dark, xcursor-simp1e-gruvbox-light
 
 Motywy Kvantum są w repo (przekolorowane kopie), więc `kvantum-theme-gruvbox-git` nie jest potrzebny.
