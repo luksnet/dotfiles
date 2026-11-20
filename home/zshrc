@@ -1,7 +1,7 @@
 # ~/.zshrc: Gruvbox Material
-# Prompt jak w bashu: alex@arch ~/Projekty/luks.net (main*) $
+# Prompt jak w bashu: alex@arch ~/Projekty/luks.net (main*) λ
 #   aqua: użytkownik@host, żółty: katalog, fiolet: gałąź git (* zmiany, + w indeksie),
-#   $ czerwony, gdy poprzednie polecenie zakończyło się błędem.
+#   λ czerwona, gdy poprzednie polecenie zakończyło się błędem.
 
 [[ -o interactive ]] || return
 
@@ -60,7 +60,7 @@ zstyle ':vcs_info:git:*' actionformats ' (%b|%a%u%c)'
 precmd() { vcs_info }
 setopt prompt_subst
 # katalog: najwyżej 3 ostatnie części, wcześniejsze jako …/
-PROMPT='%F{#89b482}%n%F{#7c6f64}@%F{#89b482}%m %F{#d8a657}%(4~|…/%3~|%~)%F{#d3869b}${vcs_info_msg_0_} %(?.%F{#d4be98}.%F{#ea6962})$%f '
+PROMPT='%F{#89b482}%n%F{#7c6f64}@%F{#89b482}%m %F{#d8a657}%(4~|…/%3~|%~)%F{#d3869b}${vcs_info_msg_0_} %(?.%F{#d4be98}.%F{#ea6962})λ%f '
 
 # --- Wtyczki (pacman: zsh-autosuggestions, zsh-syntax-highlighting) -------
 if [[ -r /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then

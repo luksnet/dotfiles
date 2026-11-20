@@ -30,6 +30,7 @@ MODULY=(
     "kde-kursor|KDE: kursor Simp1e Gruvbox|1"
     "kde-ikony|KDE: ikony Gruvbox Plus|1"
     "kde-kvantum|KDE: styl widżetów Kvantum|1"
+    "kde-czcionki|KDE: interfejs IBM Plex Sans, terminal Hack|1"
     "kde-konsola|KDE: domyślny profil Konsole|1"
     "kde-kate|KDE: motyw Kate|1"
     "kde-tapeta|KDE: tapeta pulpitu (logo Arch)|1"
@@ -118,7 +119,7 @@ link() {
 }
 
 m_pakiety() {
-    run sudo pacman -S --needed vim git alacritty kvantum fastfetch plymouth librsvg wl-clipboard ttf-hack \
+    run sudo pacman -S --needed vim git alacritty kvantum fastfetch plymouth librsvg wl-clipboard ttf-hack ttf-ibm-plex \
         zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting
     if command -v yay >/dev/null; then
         run yay -S --needed gruvbox-plus-icon-theme xcursor-simp1e-gruvbox-dark xcursor-simp1e-gruvbox-light

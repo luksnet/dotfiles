@@ -8,9 +8,9 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 # --- Prompt Gruvbox Material ---------------------------------------------
-# alex@arch ~/Projekty/luks.net (main*) $
+# alex@arch ~/Projekty/luks.net (main*) λ
 #   aqua: użytkownik@host, żółty: katalog, fiolet: gałąź git (* = zmiany),
-#   $ czerwony, gdy poprzednie polecenie zakończyło się błędem.
+#   λ czerwona, gdy poprzednie polecenie zakończyło się błędem.
 # Kopia poprzedniego pliku: ~/.bashrc.bak-przed-gruvbox
 if [[ -r /usr/share/git/completion/git-prompt.sh ]]; then
     source /usr/share/git/completion/git-prompt.sh
@@ -24,8 +24,8 @@ __gm_prompt() {
     local red='\[\e[38;2;234;105;98m\]' grey='\[\e[38;2;124;111;100m\]' r='\[\e[0m\]'
     local git=''
     if declare -F __git_ps1 >/dev/null; then git=$(__git_ps1 ' (%s)'); fi
-    local mark="${fg}\$"
-    (( st != 0 )) && mark="${red}\$"
+    local mark="${fg}λ"
+    (( st != 0 )) && mark="${red}λ"
     PS1="${aqua}\u${grey}@${aqua}\h ${yellow}\w${purple}${git} ${mark}${r} "
 }
 PROMPT_COMMAND="__gm_prompt${PROMPT_COMMAND:+; $PROMPT_COMMAND}"

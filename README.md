@@ -37,7 +37,7 @@ powstają linki do repo, więc edycja `~/.bashrc` to edycja pliku w repo.
 | `config/` | fastfetch, alacritty, Kvantum (GruvboxAqua, GruvboxMaterial) | `~/.config/` |
 | `share/` | schematy kolorów KDE, Konsole | `~/.local/share/` |
 | `wallpapers/` | tapety SVG + PNG 4K | `~/Obrazy/Tapety` |
-| `kde/apply.sh` | moduły kde-*: kolory, kursor, ikony, Kvantum, Kate, tapeta, ekran blokady, panel, zegar | ustawienia KDE |
+| `kde/apply.sh` | moduły kde-*: kolory, kursor, ikony, Kvantum, czcionki, Kate, tapeta, ekran blokady, panel, zegar | ustawienia KDE |
 | `system/` | SDDM, GRUB, Plymouth (sudo, kopie `*.bak-gruvbox`, `--cofnij` w boot) | `/etc`, `/boot`, `/usr/share` |
 | `services/` | motyw Home Assistant, CSS Immich, motyw Brave | wklejane ręcznie w usługach |
 | `avatars/` | awatary dla HA (Alex, psp) | wgrywane ręcznie |
@@ -47,7 +47,7 @@ Wtyczka gruvbox-material do Vima jest pobierana przez `install.sh`
 
 ## Pakiety
 
-- pacman: vim, git, alacritty, kvantum, fastfetch, plymouth, librsvg, wl-clipboard, ttf-hack, zsh, zsh-completions, zsh-autosuggestions, zsh-syntax-highlighting
+- pacman: vim, git, alacritty, kvantum, fastfetch, plymouth, librsvg, wl-clipboard, ttf-hack, ttf-ibm-plex, zsh, zsh-completions, zsh-autosuggestions, zsh-syntax-highlighting
 - AUR: gruvbox-plus-icon-theme, xcursor-simp1e-gruvbox-dark, xcursor-simp1e-gruvbox-light
 
 Motywy Kvantum są w repo (przekolorowane kopie), więc `kvantum-theme-gruvbox-git` nie jest potrzebny.
