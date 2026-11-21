@@ -1,28 +1,30 @@
 {
   "manifest_version": 3,
   "name": "Gruvbox Material (aqua)",
-  "version": "1.0",
-  "description": "Gruvbox Material: grafitowe tła, beżowy tekst, akcent aqua.",
+  "version": "1.1",
+  "description": "Gruvbox Material: grafitowe tła, beżowy tekst, aktywna karta żółta, akcent aqua (jak Firefox i TV).",
   "theme": {
     "colors": {
       "frame": [29, 32, 33],
       "frame_inactive": [29, 32, 33],
-      "frame_incognito": [29, 32, 33],
-      "frame_incognito_inactive": [29, 32, 33],
+      "frame_incognito": [50, 48, 47],
+      "frame_incognito_inactive": [50, 48, 47],
       "toolbar": [40, 40, 40],
       "toolbar_text": [212, 190, 152],
       "toolbar_button_icon": [212, 190, 152],
-      "tab_text": [212, 190, 152],
+      "tab_text": [216, 166, 87],
       "tab_background_text": [168, 153, 132],
       "tab_background_text_inactive": [124, 111, 100],
       "bookmark_text": [212, 190, 152],
       "omnibox_background": [50, 48, 47],
-      "omnibox_text": [221, 199, 161],
+      "omnibox_text": [212, 190, 152],
       "ntp_background": [40, 40, 40],
       "ntp_text": [212, 190, 152],
       "ntp_link": [137, 180, 130],
       "ntp_header": [69, 64, 61],
-      "button_background": [69, 64, 61]
+      "button_background": [69, 64, 61],
+      "tab_background_text_incognito": [211, 134, 155],
+      "control_button_background": [29, 32, 33]
     },
     "tints": {
       "buttons": [0.32, 0.25, 0.65]

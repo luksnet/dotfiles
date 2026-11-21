@@ -32,6 +32,7 @@ MODULY=(
     "qbittorrent|qBittorrent: motyw (kolory stanów, Hack)|1"
     "firefox|Firefox: userChrome Gruvbox + Hack (domyślny profil)|1"
     "obsidian|Obsidian: fragment CSS Gruvbox + Hack we wszystkich sejfach|1"
+    "steaminput|Steam Controller: układ pulpitu z multimediami i sterowaniem mpv|0"
     "tapety|tapety w ~/Obrazy/Tapety|1"
     "kde-kolory|KDE: włącz schemat Gruvbox Material|1"
     "kde-kursor|KDE: kursor Simp1e Gruvbox|1"
@@ -211,6 +212,29 @@ m_obsidian() {
         link config/obsidian/gruvbox-hack.css "$vault/.obsidian/snippets/gruvbox-hack.css"
     done < <(python3 -c 'import json,sys; [print(v["path"]) for v in json.load(open(sys.argv[1])).get("vaults",{}).values()]' "$json")
     ((found)) && echo "  dalej   Ustawienia -> Wygląd -> Fragmenty CSS -> włącz gruvbox-hack"
+    return 0
+}
+m_steaminput() {
+    # Nowy Steam Controller (controller_triton): szablon jest kopiowany, nie linkowany,
+    # bo Steam traktuje controller_base jako swój katalog. Po aktualizacji Steama,
+    # która go usunie, wystarczy uruchomić ten moduł ponownie.
+    local steam=~/.local/share/Steam name=controller_triton_desktop_media.vdf set n=0
+    [[ -d $steam/controller_base/templates ]] || { echo "  pomijam  brak Steama w $steam"; return 0; }
+    if pgrep -x steam >/dev/null; then
+        echo "  uwaga   zamknij Steama (Steam → Wyjdź) i uruchom moduł ponownie"; return 0
+    fi
+    run cp "$DOT/config/steam-input/$name" "$steam/controller_base/templates/$name"
+    echo "  kopia   $name → controller_base/templates"
+    for set in "$steam/steamapps/common/Steam Controller Configs"/*/config/configset_controller_triton.vdf; do
+        [[ -f $set ]] || continue
+        n=1
+        if grep -q '"413080"' "$set" && ! grep -q "$name" "$set"; then
+            echo "  pomijam  $set ma już inny układ pulpitu"; continue
+        fi
+        ((DRY)) || printf '"controller_config"\n{\n\t"413080"\n\t{\n\t\t"template"\t\t"%s"\n\t}\n}\n' "$name" > "$set"
+        echo "  układ   pulpitu ustawiony w $set"
+    done
+    ((n)) || echo "  uwaga   nie znalazłem konfiguracji pada: podłącz go raz przy włączonym Steamie i uruchom moduł ponownie"
     return 0
 }
 m_mpv()       { link config/mpv/mpv.conf ~/.config/mpv/mpv.conf; link config/mpv/script-opts ~/.config/mpv/script-opts; }

@@ -39,7 +39,7 @@ powstają linki do repo, więc edycja `~/.bashrc` to edycja pliku w repo.
 | `wallpapers/` | tapety SVG + PNG 4K | `~/Obrazy/Tapety` |
 | `kde/apply.sh` | moduły kde-*: kolory, kursor, ikony, Kvantum, czcionki, ramki okien, GTK, drugi panel (`panel2.js`), Kate, tapeta, ekran blokady, panel, zegar | ustawienia KDE |
 | `system/` | SDDM, GRUB, Plymouth (sudo, kopie `*.bak-gruvbox`, `--cofnij` w boot) | `/etc`, `/boot`, `/usr/share` |
-| `services/` | motyw Home Assistant, CSS Immich, motyw Brave | wklejane ręcznie w usługach |
+| `services/` | motyw Home Assistant, CSS Immich, motyw Brave, ustawienia Dark Reader, styl Twitcha (Stylus) | wklejane ręcznie w usługach |
 | `avatars/` | awatary dla HA (Alex, psp) | wgrywane ręcznie |
 
 Wtyczka gruvbox-material do Vima jest pobierana przez `install.sh`
@@ -54,6 +54,7 @@ Wtyczka gruvbox-material do Vima jest pobierana przez `install.sh`
 - **tmux**: prefiks Ctrl+Spacja, `|` i `-` dzielą okno, `r` przeładowuje konfigurację
 - **mpv**: OSD, pasek sterowania, konsola i statystyki (`i`) w Gruvbox, czcionka Hack; bez wtyczek
 - **qBittorrent**: motyw w katalogu (`config.json` + `stylesheet.qss`), kolory stanów torrentów i logu, Hack w listach; włączyć przy zamkniętym programie
+- **Steam Controller** (moduł `steaminput`, domyślnie wyłączony): układ pulpitu Steam Input dla nowego pada (`config/steam-input`, generator `gen.py`). Myszka na prawym gładziku, A play/pauza (MPRIS), krzyżak głośność i utwory, lewa gałka przewija w mpv, X/Y pełny ekran/wyciszenie. Do sterowania mpv w tle potrzebny `mpv-mpris`. Szablon jest kopiowany do `controller_base/templates`, więc po aktualizacji Steama uruchom moduł ponownie.
 - **Firefox**: `userChrome.css` (karty, pasek adresu, menu) i `userContent.css` (strony `about:`); zwykłe strony bez zmian
 - **Obsidian**: fragment CSS `gruvbox-hack`; po instalacji włącz w Ustawienia → Wygląd → Fragmenty CSS
 - **Firefox** z motywem „System” bierze kolory z GTK, więc pasuje do KDE (moduł kde-gtk)
@@ -70,3 +71,5 @@ Motywy Kvantum są w repo (przekolorowane kopie), więc `kvantum-theme-gruvbox-g
 - **Home Assistant**: `services/ha-gruvbox.yaml` do `config/themes/`, potem wybór motywu w profilu.
 - **Immich**: `services/immich-gruvbox.css` w Administracja → Ustawienia → Motyw → własny CSS.
 - **Brave**: `brave://extensions` → tryb dewelopera → „Załaduj rozpakowane” → `services/brave-gruvbox-material/`.
+- **Dark Reader**: ikona → ⚙ → „Wszystkie ustawienia” → Zaawansowane → „Importuj ustawienia” → `services/darkreader/gruvbox-material.json` (tło `#282828`, tekst `#d4be98`, zaznaczenie i pasek przewijania `#45403d`). Import zastępuje listy stron, więc najpierw zrób eksport, jeśli masz własne.
+- **Twitch (Stylus)**: zainstaluj Stylus, potem Zarządzaj → „Importuj” → `services/stylus/twitch-gruvbox.stylus.json` (albo „Napisz nowy styl” i wklej `services/stylus/twitch-gruvbox.user.css`). Fiolet Twitcha zamienia się na aqua, szarości na Gruvbox, czat w Hack. W Dark Reader wyłącz twitch.tv, żeby się nie nakładały. Gdy Twitch zmieni kolory: wklej `services/stylus/twitch-gruvbox-gen.js` w konsoli na twitch.tv i podmień styl.
