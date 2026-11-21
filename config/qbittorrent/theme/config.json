@@ -1,0 +1,35 @@
+{
+  "colors.dark": {
+    "Log.TimeStamp": "#7C6F64",
+    "Log.Normal": "#D4BE98",
+    "Log.Info": "#7DAEA3",
+    "Log.Warning": "#D8A657",
+    "Log.Critical": "#EA6962",
+    "Log.BannedPeer": "#E78A4E",
+    "RSS.ReadArticle": "#7C6F64",
+    "RSS.UnreadArticle": "#D4BE98",
+    "TransferList.Downloading": "#A9B665",
+    "TransferList.StalledDownloading": "#7C6F64",
+    "TransferList.DownloadingMetadata": "#A9B665",
+    "TransferList.ForcedDownloadingMetadata": "#A9B665",
+    "TransferList.ForcedDownloading": "#A9B665",
+    "TransferList.Uploading": "#89B482",
+    "TransferList.StalledUploading": "#7DAEA3",
+    "TransferList.ForcedUploading": "#89B482",
+    "TransferList.QueuedDownloading": "#D3869B",
+    "TransferList.QueuedUploading": "#D3869B",
+    "TransferList.CheckingDownloading": "#D8A657",
+    "TransferList.CheckingUploading": "#D8A657",
+    "TransferList.CheckingResumeData": "#D8A657",
+    "TransferList.StoppedDownloading": "#928374",
+    "TransferList.StoppedUploading": "#928374",
+    "TransferList.Moving": "#E78A4E",
+    "TransferList.MissingFiles": "#EA6962",
+    "TransferList.Error": "#EA6962"
+  },
+  "colors.light": {
+    "TransferList.Downloading": "#6C782E",
+    "TransferList.Uploading": "#4C7A5D",
+    "TransferList.Error": "#C14A4A"
+  }
+}

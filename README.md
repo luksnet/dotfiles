@@ -34,7 +34,7 @@ powstają linki do repo, więc edycja `~/.bashrc` to edycja pliku w repo.
 | Katalog | Zawartość | Trafia do |
 |---|---|---|
 | `home/` | `zshrc` i `bashrc` (prompt Gruvbox, fastfetch), `vimrc` | `~/.zshrc`, `~/.bashrc`, `~/.vimrc` |
-| `config/` | fastfetch, alacritty, tmux, bat, btop, Kvantum (GruvboxAqua, GruvboxMaterial) | `~/.config/` |
+| `config/` | fastfetch, alacritty, tmux, bat, btop, mpv, qBittorrent, Firefox, Obsidian, Kvantum (GruvboxAqua, GruvboxMaterial) | `~/.config/` (Firefox: domyślny profil, Obsidian: `.obsidian/snippets/` w sejfach) |
 | `share/` | schematy kolorów KDE, Konsole | `~/.local/share/` |
 | `wallpapers/` | tapety SVG + PNG 4K | `~/Obrazy/Tapety` |
 | `kde/apply.sh` | moduły kde-*: kolory, kursor, ikony, Kvantum, czcionki, ramki okien, GTK, drugi panel (`panel2.js`), Kate, tapeta, ekran blokady, panel, zegar | ustawienia KDE |
@@ -52,6 +52,10 @@ Wtyczka gruvbox-material do Vima jest pobierana przez `install.sh`
 - **bat**: `cat` z podświetlaniem, kolorowy `man`
 - **zoxide**: `z luks` skacze do `~/Projekty/luks.net`, `zi` wybór z listy
 - **tmux**: prefiks Ctrl+Spacja, `|` i `-` dzielą okno, `r` przeładowuje konfigurację
+- **mpv**: OSD, pasek sterowania, konsola i statystyki (`i`) w Gruvbox, czcionka Hack; bez wtyczek
+- **qBittorrent**: motyw w katalogu (`config.json` + `stylesheet.qss`), kolory stanów torrentów i logu, Hack w listach; włączyć przy zamkniętym programie
+- **Firefox**: `userChrome.css` (karty, pasek adresu, menu) i `userContent.css` (strony `about:`); zwykłe strony bez zmian
+- **Obsidian**: fragment CSS `gruvbox-hack`; po instalacji włącz w Ustawienia → Wygląd → Fragmenty CSS
 - **Firefox** z motywem „System” bierze kolory z GTK, więc pasuje do KDE (moduł kde-gtk)
 
 ## Pakiety

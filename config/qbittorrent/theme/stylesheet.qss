@@ -1,0 +1,16 @@
+/* qBittorrent: Gruvbox Material + Hack. Reszta kolorów przychodzi z palety KDE/Kvantum. */
+QTreeView, QTableView, QListView, QTextBrowser, QPlainTextEdit, QLineEdit {
+    font-family: "Hack";
+}
+QTreeView::item:selected, QTableView::item:selected, QListView::item:selected {
+    background: #45403D;
+    color: #D8A657;
+}
+QHeaderView::section {
+    font-family: "Hack";
+    color: #89B482;
+}
+QStatusBar, QStatusBar QLabel, QStatusBar QPushButton {
+    font-family: "Hack";
+    color: #A89984;
+}

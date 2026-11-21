@@ -1,0 +1,113 @@
+/*
+ * Obsidian: Gruvbox Material + Hack (CSS snippet, bez motywu z sieci)
+ * Wrzuć do <vault>/.obsidian/snippets/ i włącz w
+ * Ustawienia -> Wygląd -> Fragmenty CSS. Działa w trybie ciemnym.
+ */
+
+.theme-dark {
+  --gb-bg0: #1d2021;
+  --gb-bg: #282828;
+  --gb-bg1: #32302f;
+  --gb-bg2: #3c3836;
+  --gb-bg3: #45403d;
+  --gb-grey: #7c6f64;
+  --gb-grey1: #928374;
+  --gb-fg: #d4be98;
+  --gb-red: #ea6962;
+  --gb-orange: #e78a4e;
+  --gb-yellow: #d8a657;
+  --gb-green: #a9b665;
+  --gb-aqua: #89b482;
+  --gb-blue: #7daea3;
+  --gb-purple: #d3869b;
+
+  /* skala bazowa Obsidiana */
+  --color-base-00: var(--gb-bg0);
+  --color-base-05: var(--gb-bg0);
+  --color-base-10: var(--gb-bg);
+  --color-base-20: var(--gb-bg);
+  --color-base-25: var(--gb-bg1);
+  --color-base-30: var(--gb-bg2);
+  --color-base-35: var(--gb-bg3);
+  --color-base-40: var(--gb-bg3);
+  --color-base-50: var(--gb-grey);
+  --color-base-60: var(--gb-grey1);
+  --color-base-70: var(--gb-grey1);
+  --color-base-100: var(--gb-fg);
+
+  --color-red: var(--gb-red);
+  --color-orange: var(--gb-orange);
+  --color-yellow: var(--gb-yellow);
+  --color-green: var(--gb-green);
+  --color-cyan: var(--gb-aqua);
+  --color-blue: var(--gb-blue);
+  --color-purple: var(--gb-purple);
+  --color-pink: var(--gb-purple);
+
+  /* akcent: aqua */
+  --accent-h: 110;
+  --accent-s: 25%;
+  --accent-l: 61%;
+  --interactive-accent: var(--gb-aqua);
+  --interactive-accent-hover: var(--gb-green);
+  --text-on-accent: var(--gb-bg0);
+  --text-accent: var(--gb-aqua);
+  --text-accent-hover: var(--gb-green);
+
+  --background-primary: var(--gb-bg);
+  --background-primary-alt: var(--gb-bg1);
+  --background-secondary: var(--gb-bg0);
+  --background-secondary-alt: var(--gb-bg0);
+  --background-modifier-border: var(--gb-bg3);
+  --text-normal: var(--gb-fg);
+  --text-muted: var(--gb-grey1);
+  --text-faint: var(--gb-grey);
+  --text-selection: rgba(137, 180, 130, 0.25);
+
+  /* nagłówki jak prompt w terminalu */
+  --h1-color: var(--gb-yellow);
+  --h2-color: var(--gb-aqua);
+  --h3-color: var(--gb-green);
+  --h4-color: var(--gb-blue);
+  --h5-color: var(--gb-purple);
+  --h6-color: var(--gb-orange);
+
+  --link-color: var(--gb-aqua);
+  --link-color-hover: var(--gb-green);
+  --link-external-color: var(--gb-blue);
+  --link-unresolved-color: var(--gb-red);
+  --tag-color: var(--gb-yellow);
+  --tag-background: rgba(216, 166, 87, 0.12);
+  --code-background: var(--gb-bg0);
+  --code-normal: var(--gb-fg);
+  --code-comment: var(--gb-grey);
+  --code-keyword: var(--gb-red);
+  --code-function: var(--gb-green);
+  --code-string: var(--gb-aqua);
+  --code-value: var(--gb-purple);
+  --code-property: var(--gb-blue);
+  --code-tag: var(--gb-orange);
+  --blockquote-border-color: var(--gb-aqua);
+  --checkbox-color: var(--gb-aqua);
+  --text-highlight-bg: rgba(216, 166, 87, 0.3);
+  --graph-node: var(--gb-grey1);
+  --graph-node-focused: var(--gb-aqua);
+  --graph-line: var(--gb-bg3);
+}
+
+/* Hack wszędzie: interfejs, tekst i kod */
+body {
+  --font-interface-theme: "Hack", monospace;
+  --font-text-theme: "Hack", monospace;
+  --font-monospace-theme: "Hack", monospace;
+  --radius-s: 2px;
+  --radius-m: 2px;
+  --radius-l: 3px;
+}
+
+/* nagłówek H1 z lambdą jak "λ ~/notatka" */
+.theme-dark .markdown-rendered h1::before,
+.theme-dark .HyperMD-header-1 .cm-header-1::before {
+  content: "λ ";
+  color: var(--gb-aqua);
+}

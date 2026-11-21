@@ -28,6 +28,10 @@ MODULY=(
     "tmux|tmux w kolorach Gruvbox (prefiks Ctrl+Spacja)|1"
     "bat|bat (cat z podświetlaniem) w motywie gruvbox|1"
     "btop|btop w motywie Gruvbox Material|1"
+    "mpv|mpv: OSD, pasek i statystyki w Gruvbox + Hack|1"
+    "qbittorrent|qBittorrent: motyw (kolory stanów, Hack)|1"
+    "firefox|Firefox: userChrome Gruvbox + Hack (domyślny profil)|1"
+    "obsidian|Obsidian: fragment CSS Gruvbox + Hack we wszystkich sejfach|1"
     "tapety|tapety w ~/Obrazy/Tapety|1"
     "kde-kolory|KDE: włącz schemat Gruvbox Material|1"
     "kde-kursor|KDE: kursor Simp1e Gruvbox|1"
@@ -173,6 +177,43 @@ m_kolory() {
 m_tmux()      { link config/tmux/tmux.conf ~/.config/tmux/tmux.conf; }
 m_bat()       { link config/bat/config ~/.config/bat/config; }
 m_btop()      { link config/btop/btop.conf ~/.config/btop/btop.conf; }
+m_qbittorrent() {
+    link config/qbittorrent/theme ~/.config/qBittorrent/gruvbox-hack
+    local conf=~/.config/qBittorrent/qBittorrent.conf
+    if pgrep -x qbittorrent >/dev/null; then
+        echo "  uwaga   zamknij qBittorrent i uruchom moduł ponownie, żeby włączyć motyw"; return
+    fi
+    [[ -f $conf ]] || { run mkdir -p "$(dirname "$conf")"; ((DRY)) || printf '[Preferences]\n' > "$conf"; }
+    grep -q '^\[Preferences\]' "$conf" || { ((DRY)) || printf '\n[Preferences]\n' >> "$conf"; }
+    run sed -i '/^General\\UseCustomUITheme=/d; /^General\\CustomUIThemePath=/d' "$conf"
+    run sed -i "/^\[Preferences\]/a General\\\\UseCustomUITheme=true\nGeneral\\\\CustomUIThemePath=$HOME/.config/qBittorrent/gruvbox-hack/config.json" "$conf"
+    echo "  motyw   włączony w $conf"
+}
+m_firefox() {
+    local base ini prof
+    for base in ~/.config/mozilla/firefox ~/.mozilla/firefox; do
+        [[ -f $base/installs.ini ]] && { ini=$base; break; }
+    done
+    [[ -n ${ini:-} ]] || { echo "  pomijam  brak profilu Firefoksa"; return; }
+    prof=$(sed -n 's/^Default=//p' "$ini/installs.ini" | head -1)
+    [[ -n $prof && -d $ini/$prof ]] || { echo "  pomijam  nie znalazłem domyślnego profilu"; return; }
+    link config/firefox/chrome "$ini/$prof/chrome"
+    link config/firefox/user.js "$ini/$prof/user.js"
+    pgrep -x firefox >/dev/null && echo "  uwaga   uruchom Firefoksa ponownie, żeby zobaczyć motyw"
+    return 0
+}
+m_obsidian() {
+    local json=~/.config/obsidian/obsidian.json vault found=0
+    [[ -f $json ]] || { echo "  pomijam  brak sejfu Obsidiana (utwórz sejf i uruchom moduł ponownie)"; return 0; }
+    while IFS= read -r vault; do
+        [[ -d $vault ]] || continue
+        found=1
+        link config/obsidian/gruvbox-hack.css "$vault/.obsidian/snippets/gruvbox-hack.css"
+    done < <(python3 -c 'import json,sys; [print(v["path"]) for v in json.load(open(sys.argv[1])).get("vaults",{}).values()]' "$json")
+    ((found)) && echo "  dalej   Ustawienia -> Wygląd -> Fragmenty CSS -> włącz gruvbox-hack"
+    return 0
+}
+m_mpv()       { link config/mpv/mpv.conf ~/.config/mpv/mpv.conf; link config/mpv/script-opts ~/.config/mpv/script-opts; }
 m_tapety()    { link wallpapers "$PICTURES/Tapety"; }
 m_sddm()      { run sudo bash "$DOT/system/sddm-gruvbox.sh"; }
 m_boot()      { run sudo bash "$DOT/system/boot/boot-gruvbox.sh"; }

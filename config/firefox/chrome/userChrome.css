@@ -1,0 +1,79 @@
+/*
+ * Firefox: Gruvbox Material + Hack dla interfejsu (karty, pasek adresu, menu).
+ * Strony nie są zmieniane, tylko okno przeglądarki.
+ */
+
+:root {
+  --gb-bg0: #1d2021;
+  --gb-bg: #282828;
+  --gb-bg1: #32302f;
+  --gb-bg2: #3c3836;
+  --gb-bg3: #45403d;
+  --gb-grey: #7c6f64;
+  --gb-grey1: #928374;
+  --gb-fg: #d4be98;
+  --gb-red: #ea6962;
+  --gb-yellow: #d8a657;
+  --gb-green: #a9b665;
+  --gb-aqua: #89b482;
+
+  /* okno i paski */
+  --toolbox-bgcolor: var(--gb-bg0) !important;
+  --toolbox-bgcolor-inactive: var(--gb-bg0) !important;
+  --toolbox-textcolor: var(--gb-fg) !important;
+  --toolbox-textcolor-inactive: var(--gb-grey1) !important;
+  --toolbar-bgcolor: var(--gb-bg) !important;
+  --toolbar-color: var(--gb-fg) !important;
+  --toolbar-field-background-color: var(--gb-bg1) !important;
+  --toolbar-field-focus-background-color: var(--gb-bg1) !important;
+  --toolbar-field-color: var(--gb-fg) !important;
+  --toolbar-field-focus-color: var(--gb-fg) !important;
+  --toolbar-field-border-color: var(--gb-bg3) !important;
+  --toolbar-field-focus-border-color: var(--gb-aqua) !important;
+  --toolbarbutton-icon-fill: var(--gb-fg) !important;
+  --toolbarbutton-icon-fill-attention: var(--gb-aqua) !important;
+  --chrome-content-separator-color: var(--gb-bg3) !important;
+
+  /* karty */
+  --tab-selected-bgcolor: var(--gb-bg) !important;
+  --tab-selected-textcolor: var(--gb-yellow) !important;
+  --tab-hover-background-color: var(--gb-bg1) !important;
+  --tab-loading-fill: var(--gb-aqua) !important;
+  --tab-border-radius: 2px !important;
+
+  /* menu, panele, podpowiedzi adresu */
+  --arrowpanel-background: var(--gb-bg0) !important;
+  --arrowpanel-color: var(--gb-fg) !important;
+  --arrowpanel-border-color: var(--gb-bg3) !important;
+  --panel-separator-color: var(--gb-bg3) !important;
+  --urlbarView-highlight-background: var(--gb-bg3) !important;
+  --urlbarView-highlight-color: var(--gb-yellow) !important;
+  --urlbarView-action-color: var(--gb-aqua) !important;
+  --urlbarView-url-color: var(--gb-aqua) !important;
+  --focus-outline-color: var(--gb-aqua) !important;
+  --color-accent-primary: var(--gb-aqua) !important;
+  --color-accent-primary-hover: var(--gb-green) !important;
+  --button-primary-bgcolor: var(--gb-aqua) !important;
+  --button-primary-color: var(--gb-bg0) !important;
+  --toolbar-field-focus-outline-color: var(--gb-aqua) !important;
+  --sidebar-background-color: var(--gb-bg0) !important;
+  --sidebar-text-color: var(--gb-fg) !important;
+}
+
+/* Hack w kartach, pasku adresu i menu */
+#tabbrowser-tabs, #urlbar, #searchbar, menupopup, panel, #sidebar-box, #PersonalToolbar,
+.urlbarView, .tab-label, #nav-bar {
+  font-family: "Hack", monospace !important;
+}
+
+/* aktywna karta: aqua kreska na górze, jak fokus w launcherze */
+.tab-background[selected] {
+  border-top: 2px solid var(--gb-aqua) !important;
+  box-shadow: none !important;
+}
+
+/* zaznaczenie tekstu */
+::selection {
+  background-color: rgba(137, 180, 130, 0.35) !important;
+  color: var(--gb-fg) !important;
+}

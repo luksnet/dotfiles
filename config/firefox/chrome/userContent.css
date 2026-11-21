@@ -1,0 +1,19 @@
+/* Firefox: Gruvbox na stronach wewnętrznych (nowa karta, about:*). Zwykłe strony bez zmian. */
+@-moz-document url-prefix("about:") {
+  :root {
+    --in-content-page-background: #282828 !important;
+    --in-content-page-color: #d4be98 !important;
+    --in-content-box-background: #32302f !important;
+    --in-content-border-color: #45403d !important;
+    --in-content-primary-button-background: #89b482 !important;
+    --in-content-primary-button-text-color: #1d2021 !important;
+    --color-accent-primary: #89b482 !important;
+    --newtab-background-color: #282828 !important;
+    --newtab-background-color-secondary: #32302f !important;
+    --newtab-text-primary-color: #d4be98 !important;
+    --newtab-primary-action-background: #89b482 !important;
+    --background-color-canvas: #282828 !important;
+    --text-color: #d4be98 !important;
+    font-family: "Hack", monospace !important;
+  }
+}
